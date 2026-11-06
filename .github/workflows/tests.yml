@@ -15,3 +15,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install -e ".[test]"
       - run: python -m pytest -q
+      - name: Run reuse examples
+        run: |
+          python -m examples.scalar_optimization
+          python -m examples.tensor_derivatives
+          python -m examples.background_subtraction
+          python -m examples.stationary_landscape

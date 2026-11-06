@@ -1,7 +1,9 @@
-# Contribuições
+# Contributing
 
-Abra uma issue com hipótese, motivação, protocolo e critério de refutação. Para mudanças no código, envie testes que detectem falhas numéricas relevantes, execute `python -m pytest -q` e descreva impacto nos resultados.
+This is the final archival release of the three-phase study. Reproducibility corrections and well-scoped follow-up experiments are welcome.
 
-Preserve os resultados de referência. Novos experimentos devem usar outra pasta, sementes explícitas e parâmetros registrados. Diferencie observação, conjectura e prova. Não interprete informação já inserida no potencial como previsão independente.
+State the hypothesis, protocol, numerical tolerances, and falsification criterion. Preserve the reference datasets: use a new output directory or a separate clone for new experiments. Distinguish observation, conjecture, and mathematical proof. Do not interpret information already encoded in a potential as independent prediction.
 
-Não inclua credenciais, caminhos pessoais, arquivos de ambiente ou registros de conversas. Documentação deve explicar o que foi feito, por que e como reproduzir.
+Run `python -m pytest -q` and the four modules listed in `examples/README.md`. Document any change affecting numerical results, dependency behavior, or artifact schemas. Do not commit credentials, personal paths, environment directories, or conversation records. Scientific results should include seeds, selection rules, missing cases, and uncertainty or validation limits.
+
+Richard Ikeda is the Author & Lead Investigator. Cite the repository using CITATION.cff when reusing the software or datasets. All published code, documentation, and results are distributed under the MIT License.

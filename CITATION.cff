@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or its experimental results, please cite this repository."
+type: software
+title: "OMEGAGRAD: A Differentiable Top-Down Framework for Cosmological Finite Arithmetic"
+authors:
+  - family-names: Ikeda
+    given-names: Richard
+version: 1.0.0
+date-released: 2026-11-06
+license: MIT
+repository-code: "https://github.com/richardikeda/omegagrad"
+url: "https://github.com/richardikeda/omegagrad"
+abstract: "An experimental mathematics and scientific computing study of finite prime geometry, continuum detrending, reduced-base wave candidate generation, and numerical differentiation. Richard Ikeda is the author and lead investigator."
+keywords:
+  - experimental mathematics
+  - scientific computing
+  - automatic differentiation
+  - prime numbers

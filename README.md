@@ -1,96 +1,76 @@
 # OMEGAGRAD
 
+[Leia em Português (pt-BR)](docs/pt-BR/README.pt-BR.md)
+
 **A Differentiable Top-Down Framework for Cosmological Finite Arithmetic**
 
-Laboratório aberto de computação científica para investigar a geometria de conjuntos finitos de primos por meio de potenciais diferenciáveis. O algoritmo **OmegaSieve** percorre o campo do horizonte superior até a base, registrando atratores, barreiras e trajetórias.
+**Richard Ikeda — Author & Lead Investigator**
+Version **1.0.0**, Final Archival Release · November 6, 2026 · MIT License
 
-O objetivo é testar hipóteses sobre assimetria e estabilidade de escala com dados reproduzíveis. O campo é construído a partir de primos conhecidos: este projeto **não apresenta um algoritmo para descobrir primos desconhecidos**, nem demonstra uma teoria física cosmológica.
+OMEGAGRAD is an experimental mathematics and scientific computing study of finite prime sets represented by differentiable potentials. A finite horizon is normalized to one, allowing potential wells, separating barriers, basin widths, and harmonic-wave candidate detectors to be compared across scales.
 
-![Comparação experimental](outputs/first_run/comparison.png)
+The cosmological terminology motivates a finite operational horizon. The implemented cutoff is the largest prime not exceeding `2**S_bits`; it does not calculate a physical cosmological bound or Kolmogorov complexity.
 
+## Study overview
 
-## Fase 3 - v0.3.0
+| Phase | Scope | Principal observation |
+|---|---|---|
+| 1 | 6–12 bits; scalar autograd; potential geometry | Fixed smoothing lost wells; inverse-square smoothing preserved one well per prime in the tested configurations. |
+| 2 | 6–12 bits; continuum detrending; reduced-base wave; removal test | Detrending improved mean absolute error, but the joint two-feature regression retained negative test R². Blind-wave candidates had high recall and many false positives. |
+| 3 | Radar through 18 bits; geometry through 16 bits; tensor derivatives | A three-feature retrospective regression reached R²=0.1841 at 16 bits. Geometric filtering improved precision at the expense of recall; the hybrid pipeline remained slower than direct base-2 Miller–Rabin. |
 
-Filtro de energia/curvatura com calibração restrita à base pequena, radar com malha 6k±1, Miller-Rabin base 2 e motor TensorValue em lote. Radar executado até 18 bits; geometria e regressão até 16 bits.
+![Phase 3 precision, recall, and runtime](outputs/phase3/comparison.png)
 
-```bash
-python -m omegagrad.phase3
-python -m omegagrad.phase3_refine
-python build_results_pdf.py --phase3
-```
+At 12 bits, the complete potential has 564 known primes but only 74 minima with fixed epsilon. Inverse-square smoothing retained all 564 minima. The phase-3 radar reduced false positives from the phase-2 count of 2,211 to 57, while recall fell to 59.71%. That comparison changes both phase restrictions and filtering; it does not isolate well depth alone.
 
-Em 12 bits, a precisão geométrica atingiu 85,12%, mas o recall caiu a 59,71%. Portanto, a melhoria não elimina o compromisso entre precisão e recuperação. A calibração pequena sofre mudança de distribuição. Miller-Rabin com uma base é um filtro probabilístico, não um certificado.
+Positive regression scores are retrospective: the complete potential contains the target primes. Reduced-base radar evaluation is separate from that full-oracle geometry. A single Miller–Rabin base is not a primality certificate.
 
-[Relatório completo da Fase 3](outputs/phase3/REPORT.md) · [Benchmarks CSV](outputs/phase3/summary.csv) · [PDF consolidado](output/pdf/OMEGAGRAD_Phase3_Final_Report.pdf).
+## Install and reproduce
 
-TensorValue oferece backprop com broadcasting e segunda derivada direcional, suficiente para Hessianas locais de coordenadas independentes; não implementa Hessianas densas gerais. A varredura do radar continua parcialmente escalar. As métricas de custo incluem esse trabalho.
-
-## Fase 2 - v0.2.0
-
-Implementados fundo contínuo sem posições primas, onda com base reduzida e teste de remoção de 10% dos primos internos.
+Python 3.10 or newer; the reference experiments used Python 3.12. Create and activate a virtual environment, then:
 
 ```bash
-python -m omegagrad.phase2
-python build_results_pdf.py --phase2
-```
-
-O detrending combina assimetria e Hessiana em regressão retrospectiva. Em 12 bits, MAE 3,02 versus baseline 3,46, mas R² permanece negativo (-0,044). A onda cega apresenta precisão 19,51%, recall 98,17% e F1 32,55%; os mínimos arredondados produzem muitos compostos. A regra simples de ponto médio do holdout não recuperou exatamente nenhum dos primos removidos.
-
-Veja [o protocolo e resultados completos da Fase 2](outputs/phase2/REPORT.md), [os dados](outputs/phase2/results.json) e [o PDF](output/pdf/OMEGAGRAD_Phase2_Blind_Discovery.pdf). A varredura cega enumera mínimos por brackets do gradiente em ordem top-down; não é uma trajetória com momento. O horizonte continua sendo informado.
-
-## Resultados iniciais da Fase 1
-
-| Bits | Horizonte | Primos | Mínimos: epsilon fixo | Mínimos: epsilon escalado |
-|---:|---:|---:|---:|---:|
-| 6 | 61 | 18 | 18 | 18 |
-| 8 | 251 | 54 | 53 | 54 |
-| 10 | 1021 | 172 | 110 | 172 |
-| 12 | 4093 | 564 | 74 | 564 |
-
-- O controle de suavização recuperou todos os primos conhecidos nas três sementes de cada escala, com escape externo controlado entre poços.
-- A largura relativa mediana das bacias foi 1,012, 1,020 e 1,022 em 8, 10 e 12 bits. A semelhança é descritiva; não prova invariância.
-- Em 12 bits, o modelo linear de log(lambda) apresentou MAE 5,32; a média do treino apresentou MAE 3,46. Não houve ganho preditivo neste protocolo.
-- 23 testes passaram na validação inicial. O erro máximo AD versus analítico foi 7,28e-11.
-
-## Instalação e execução
-
-Python 3.10 ou superior. A execução de referência usou Python 3.12.13.
-
-```bash
-python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# PowerShell: .venv/Scripts/Activate.ps1
 python -m pip install -e ".[test,report]"
 python -m pytest -q
-python -m omegagrad.experiments
-python build_results_pdf.py
+python -m examples.scalar_optimization
+python -m examples.tensor_derivatives
+python -m examples.background_subtraction
+python -m examples.stationary_landscape
 ```
 
-Para reproduzir as versões utilizadas: `python -m pip install -r requirements-lock.txt`, seguido de `python -m pip install -e ".[test,report]"`.
-
-Para executar a navegação diretamente com autograd:
+The published datasets are already included. To rerun the experiments:
 
 ```bash
-python -m omegagrad.experiments --bits 6 --modes fixed --seeds 0 --backend autograd --output outputs/autograd_validation
+python -m omegagrad.experiments --output outputs/reproduction_phase1
+python -m omegagrad.phase2
+python -m omegagrad.phase3
+python -m omegagrad.phase3_refine
+python build_technical_papers.py
 ```
 
-A execução padrão grava em `outputs/first_run`, substituindo os resultados anteriores. Use `--output outputs/my_run` para preservar o conjunto de referência. A geração do PDF usa os diretórios de referência.
+Phase 2 and Phase 3 runners write to their fixed output directories and replace existing files. Use a separate clone for reproduction. The full phase-3 geometry is computationally intensive; CI runs numerical tests and reuse examples rather than all experiments. Historical results identify their execution versions and hashes; archival documentation changes do not redefine those runs.
 
-## Documentação
+## Reuse the numerical components
 
-- [Fundamentação e escolhas de modelagem](docs/THEORY.md)
-- [Métodos, métricas e controles](docs/METHODOLOGY.md)
-- [Conclusões iniciais e limites](docs/INITIAL_FINDINGS.md)
-- [Arquitetura e reprodução](docs/REPRODUCIBILITY.md)
-- [Dicionário dos dados](docs/DATA_DICTIONARY.md)
-- [Relatório completo](outputs/first_run/REPORT.md)
-- [PDF com resultados e gráficos](output/pdf/OMEGAGRAD_Resultados_Completos.pdf)
-- [Como contribuir](CONTRIBUTING.md)
+```python
+from omegagrad.engine import Value
+x = Value(2.0)
+loss = (x - 3.0)**2
+loss.backward()
+print(x.grad)  # -2.0
+```
 
-## Organização
+`Value` provides scalar first-order reverse differentiation. `TensorValue` adds NumPy broadcasting, reverse differentiation, and forward directional second derivatives; independent coordinate batches yield local second derivatives. It does not provide a dense general Hessian. See the [reuse guide](docs/en/REUSE_GUIDE.md) and [executable examples](examples/README.md).
 
-`omegagrad/`: implementação; `tests/`: verificações numéricas; `docs/`: estudo; `outputs/`: dados e figuras de referência; `output/pdf/`: relatório; `build_results_pdf.py`: gerador do relatório.
+## Documentation and research artifacts
 
-## Licença
+- [Technical paper](docs/en/PAPER.md) · [English PDF](output/pdf/OMEGAGRAD_Technical_Paper.pdf)
+- [Theory](docs/en/THEORY.md) · [Methodology](docs/en/METHODOLOGY.md) · [Findings](docs/en/FINDINGS.md)
+- [Reproducibility](docs/en/REPRODUCIBILITY.md) · [Data dictionary](docs/en/DATA_DICTIONARY.md)
+- [Complete Portuguese archive](docs/pt-BR/ARCHIVE.md)
+- [Phase 1 data](outputs/first_run/results.json) · [Phase 2 data](outputs/phase2/results.json) · [Phase 3 data](outputs/phase3/results.json)
+- [Citation metadata](CITATION.cff) · [License](LICENSE) · [Contributing](CONTRIBUTING.md)
 
-Código, documentação e resultados publicados sob [MIT](LICENSE). Trabalho experimental de Richard Ikeda. Contribuições devem preservar a distinção entre medição, hipótese e demonstração.
+## Archival scope
+
+This release consolidates the completed experiments, their limitations, bilingual documentation, and reusable numerical components. It does not claim a new theorem about primes, a certified blind sieve, or a computational advantage over discrete primality testing. “Archival” describes this release; the GitHub repository remains writable for reproducibility corrections.

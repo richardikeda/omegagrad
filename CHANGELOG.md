@@ -1,25 +1,24 @@
-# Histórico
+# Changelog
 
-## 0.3.0 - 2026-11-06
+## 1.0.0 — 2026-11-06 — Final Archival Release
 
-- Radar espectral calibrado apenas na base pequena e verificador Miller-Rabin base 2.
-- TensorValue com broadcasting, backprop e segunda derivada direcional.
-- Radar até 18 bits e geometria residual até 16 bits, com sensibilidade numérica.
-- Benchmarks, resultados negativos, trade-offs e relatório consolidado.
+- English primary documentation and preserved Portuguese archive.
+- Consolidated bilingual technical paper and reproducible PDF builds.
+- Citation metadata and consistent author attribution to Richard Ikeda.
+- Executable, validated reuse examples for scalar/tensor derivatives, background subtraction, and stationary landscapes.
+- Numerical findings reconciled against the saved datasets; empirical scope and limitations made explicit.
+- No new scientific simulation campaign; historical outputs retained.
 
-## 0.2.0 - 2026-11-06
+## 0.3.0 — 2026-11-06
 
-- Fundo contínuo por quadratura com refinamento nas bordas e potencial residual.
-- Scanner cego de mínimos da onda com base reduzida, métricas e teste de refinamento.
-- Remoção de primos internos, perturbações locais e diagnóstico de recuperação.
-- Dados, gráficos e relatório PDF da Fase 2; testes de gradientes e isolamento da base.
+Spectral radar, base-2 Miller–Rabin, tensor differentiation, radar through 18 bits, and residual geometry through 16 bits.
 
-## 0.1.0 - 2026-11-06
+## 0.2.0 — 2026-11-06
 
-- Motor escalar de diferenciação reversa e funcionais L/W.
-- Catálogo numérico refinado de pontos estacionários e bacias.
-- OmegaSieve com descida, momento, ruído relativo e escape controlado.
-- Bateria de quatro escalas, duas políticas de suavização e três sementes.
-- Diagnóstico retrospectivo de gaps e comparação de larguras relativas.
-- 23 testes, dados de referência, gráficos e relatório PDF.
-- Documentação pública de metodologia, limitações e reprodução.
+Continuum background subtraction, reduced-base wave scanning, and internal-prime removal experiments.
+
+## 0.1.0 — 2026-11-06
+
+Scalar autograd, finite-universe potentials, controlled top-down navigation, and initial scale comparison.
+
+The [Portuguese historical changelog](docs/pt-BR/CHANGELOG.md) is preserved.

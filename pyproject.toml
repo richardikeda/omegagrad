@@ -4,8 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "omegagrad-lab"
-version = "0.3.0"
-description = "Reproducible finite prime potential experiments"
+version = "1.0.0"
+description = "Experimental finite-prime geometry by Richard Ikeda, Author & Lead Investigator"
+authors = [{name = "Richard Ikeda"}]
+readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8"]
 
