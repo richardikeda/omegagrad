@@ -1,5 +1,12 @@
 # Histórico
 
+## 1.0.0 — 2026-11-06
+
+- Documentação principal em inglês e acervo em português.
+- Artigos consolidados nos dois idiomas, metadados de citação e quatro exemplos executáveis.
+- Resultados das três campanhas preservados e conclusões reconciliadas com os dados.
+
+
 ## 0.3.0 - 2026-11-06
 
 - Radar espectral calibrado apenas na base pequena e verificador Miller-Rabin base 2.

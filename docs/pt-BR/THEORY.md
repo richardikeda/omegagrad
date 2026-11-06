@@ -29,6 +29,12 @@ Em uma dimensão, as chamadas selas do projeto são máximos locais com L''<0, s
 
 O motor escalar registra um grafo de operações e aplica a regra da cadeia em ordem topológica reversa. Isso permite validar derivadas e experimentar outros funcionais. A bateria usa fórmulas analíticas vetorizadas conferidas contra o motor, evitando o custo de reconstruir um grafo escalar a cada avaliação.
 
+## Fundo contínuo e radar
+
+A densidade aproximada P_omega/log(u·P_omega) é integrada de 2/P_omega a 1 contra o núcleo logarítmico. O residual é a diferença entre o potencial completo e esse fundo. O fundo usa horizonte e epsilon, enquanto o potencial completo contém os primos-alvo.
+
+O radar usa U(x)=-soma log(sin²(pi·x/p)+epsilon). Na Fase 3, exclui 2 e 3 da soma e examina células centradas em 6k±1. Trata-se de uma restrição aritmética explícita. A regularização limita a contribuição de termos próximos de zero. Tanto os mínimos deslocados quanto o arredondamento podem gerar candidatos compostos.
+
 ## O que permanece em aberto
 
 Sem observáveis independentes dos primos desconhecidos, nenhuma correlação neste campo demonstra previsão cega. Sem controles não primos e mais escalas, semelhança entre distribuições não demonstra uma propriedade exclusiva dos primos.

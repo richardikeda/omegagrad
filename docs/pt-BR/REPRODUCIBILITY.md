@@ -1,25 +1,34 @@
-# Arquitetura e reprodução
+# Reprodução e proveniência
 
-## Componentes e responsabilidades
+**Richard Ikeda — Autor e pesquisador principal**
 
-- `engine.py`: Value escalar com operações reais, sin, cos, log, exp e potências; backprop iterativo evita limite de recursão. Cada backward zera o grafo alcançável. Não mutar valores entre forward e backward.
-- `universe.py`: crivo de Eratóstenes, normalização, L e W; avaliações NumPy em blocos e Hessiano analítico. Suporta S_bits de 2 a 20, sujeito aos limites de memória e malha.
-- `omegasieve.py`: catálogo numérico de pontos estacionários, bacias e navegador. O Hessiano é analítico; o motor não constrói grafos de derivadas superiores.
-- `experiments.py`: configuração, diagnósticos, regressões, gráficos e exportação.
-- `build_results_pdf.py`: relatório de referência em PDF usando dados já calculados.
+Instale Python 3.10 ou posterior e execute os comandos na raiz do repositório. O ambiente das campanhas está documentado nos JSONs. O requirements-lock.txt registra um ambiente de referência, sujeito a diferenças de compatibilidade entre versões de Python e plataformas. Resultados em ponto flutuante e tempos podem variar.
 
-## Ambiente e auditoria
+```bash
+python -m pip install -e ".[test,report]"
+python -m pytest -q
+python -m omegagrad.experiments --output outputs/reproduction_phase1
+python -m omegagrad.experiments --bits 6 --modes fixed --seeds 0 --backend autograd --output outputs/reproduction_autograd
+python -m omegagrad.phase2
+python -m omegagrad.phase3
+python -m omegagrad.phase3_refine
+python build_results_pdf.py --phase2
+python build_results_pdf.py --phase3
+python build_technical_papers.py
+```
 
-`requirements-lock.txt` registra versões de dependências do ambiente de publicação. O JSON mantém as versões efetivas de Python, NumPy, SciPy e Matplotlib da execução, parâmetros, sementes e hashes SHA-256 dos módulos. Resultados float64 podem apresentar diferenças pequenas entre plataformas; tempo de execução não é benchmark controlado.
+As Fases 2 e 3 sobrescrevem os diretórios de referência. Use uma cópia separada para reproduzir as campanhas. A geração dos artigos usa os arquivos Markdown e as figuras já publicadas. A integração contínua roda os testes e exemplos em Python 3.10 e 3.12. A geometria estendida tem custo superior ao da suíte de testes.
 
-Cada avaliação do campo custa O(n) no número de primos. O crivo e a construção da base fazem parte do custo, e não podem ser omitidos em comparações com algoritmos de primalidade.
+| Campanha | Commit de referência | Dados |
+|---|---|---|
+| Fase 1 | 2c828e8 | outputs/first_run e outputs/autograd_validation |
+| Fase 2 | dc54a92 | outputs/phase2 |
+| Fase 3 | 8579a08 | outputs/phase3 |
 
-Os testes confrontam AD com diferenças finitas e fórmulas analíticas, verificam grafos compartilhados e longos, domínios inválidos, onda, horizontes, partição das bacias, refinamento e repetibilidade das trajetórias.
+Os hashes registram os bytes presentes na execução. Na Fase 1, o JSON também registra hashes após normalização para LF pelo Git. Para reproduzir uma campanha histórica, use seu commit de referência. A edição de arquivo consolida a implementação e a documentação.
 
-## Histórico técnico inicial
+A Fase 3 preserva a geometria inicial e a refinada. Na execução refinada, avisos de integração são tratados como erros. A estabilidade sob refinamento sustenta o sinal dos R² observados, dentro do método de busca de raízes usado.
 
-A primeira navegação usava um passo excessivamente conservador em regiões planas. Foi substituída por adaptação à curvatura com limitação e backtracking. A malha inicial de 12 bits perdeu um par de raízes próximo; o refinamento automático e um teste de regressão foram adicionados. A bateria publicada foi executada após essas correções.
+Value calcula derivadas escalares de primeira ordem. TensorValue combina gradientes reversos e segundas derivadas direcionais. Background integra a densidade do modelo e Residual subtrai campos compatíveis. A busca original avalia a malha em lote e refina raízes individualmente. A geometria estendida usa bisseção em lote. Avaliar o potencial completo custa O(número de primos) por coordenada, e o radar conserva etapas escalares em Python.
 
-A integração contínua executa os testes; os resultados de referência são artefatos experimentais versionados. Alterações científicas devem gerar uma nova pasta de resultados e registrar diferenças de protocolo.
-
-Os hashes `source_sha256` preservam os bytes executados no Windows; `source_sha256_git_lf` registra a mesma fonte após normalização de quebras de linha LF pelo Git. A diferença de hash não representa mudança de algoritmo.
+[Acervo histórico](ARCHIVE.md) · [Exemplos executáveis](REUSE_GUIDE.md)

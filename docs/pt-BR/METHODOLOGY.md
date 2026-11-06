@@ -33,3 +33,13 @@ A separação protege o ajuste dos coeficientes, mas não elimina informação d
 ## Comparação de escala
 
 A largura de cada bacia é dividida pela média dos gaps vizinhos ao primo associado. Excluem-se associações aos primos das duas extremidades. Comparam-se medianas e distância entre CDFs pelo KS, sem interpretação inferencial de p-valores. A média das larguras brutas é 1/número de bacias quando elas particionam o domínio; seu encolhimento sozinho é uma identidade geométrica.
+
+## Fases 2 e 3
+
+Na Fase 2, a quadratura do fundo e a spline são refinadas globalmente e nas bordas. A regressão conjunta usa log(lambda) e log(abs(H)) e compara intervalos que têm uma barreira única antes e depois da subtração. A onda recebe o horizonte e a base até sua raiz quadrada. A varredura descendente detecta mudanças de sinal e refina mínimos por Brent. Os passos 0,05 e 0,025 são comparados. Os mínimos são arredondados e pontuados contra uma referência separada. O holdout remove aproximadamente 10% dos primos internos com semente 42. A regra testada propõe o ponto médio de intervalos retidos maiores que duas vezes a mediana.
+
+Na Fase 3, a soma logarítmica exclui 2 e 3. A busca usa células de largura 0,98 centradas em 6k±1. Energia e curvatura têm tetos escolhidos entre quatro quantis, e a distância fracionária admite 0,1, 0,25 ou 0,49. O F1 de treino usa somente rótulos da base pequena. A autoanulação dos termos dos primos da base induz uma diferença entre calibração e teste. O experimento não isolou seu efeito causal.
+
+Os sobreviventes passam por Miller–Rabin forte base 2. Chamadas são comparadas tanto com todos os inteiros quanto com 6k±1. O tempo total inclui radar e verificação. Os registros de tempo são de execuções individuais.
+
+Em 12, 14 e 16 bits, a bisseção em lote busca barreiras em intervalos centrais dos gaps e rejeita curvatura inválida. A regressão acrescenta o deslocamento da barreira em unidades inteiras. O fundo refinado tem 4097 nós globais, refinamento nas bordas e integração subdividida. Os resultados iniciais com 2049 nós permitem avaliar sensibilidade. A geometria usa a base completa, incluindo os alvos. KS compara distribuições empíricas e tem interpretação descritiva.

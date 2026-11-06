@@ -41,10 +41,10 @@ Em 12 bits, epsilon fixo deixa 74 mínimos para 564 primos. A política escalada
 
 | Bits | Precisão | Recall | F1 da onda | MAE residual | R² de teste |
 | --- | --- | --- | --- | --- | --- |
-| 6 | 0.3611 | 0.9286 | 0.5200 | 1.6778 | -1.7412 |
-| 8 | 0.3038 | 1.0000 | 0.4660 | 1.9832 | -0.9590 |
-| 10 | 0.2355 | 0.9814 | 0.3798 | 2.7106 | -0.1737 |
-| 12 | 0.1951 | 0.9817 | 0.3255 | 3.0214 | -0.0435 |
+| 6 | 0,3611 | 0,9286 | 0,5200 | 1,6778 | -1,7412 |
+| 8 | 0,3038 | 1,0000 | 0,4660 | 1,9832 | -0,9590 |
+| 10 | 0,2355 | 0,9814 | 0,3798 | 2,7106 | -0,1737 |
+| 12 | 0,1951 | 0,9817 | 0,3255 | 3,0214 | -0,0435 |
 
 O detrending melhora o MAE frente à média do treino em todas as escalas, mas o R² de teste permanece negativo com duas features. Em 12 bits, o scanner retorna 536 verdadeiros positivos, 2211 falsos positivos e 10 falsos negativos. O teste de remoção com semente 42 oculta cerca de 10% dos primos internos e mede deslocamentos e Hessianas. A heurística do ponto médio dos gaps retidos não recupera nenhuma coordenada oculta exatamente.
 
@@ -52,23 +52,23 @@ O detrending melhora o MAE frente à média do treino em todas as escalas, mas o
 
 | Bits | Precisão filtro | Recall filtro | F1 filtro | Precisão híbrido | Recall híbrido |
 | --- | --- | --- | --- | --- | --- |
-| 6 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
-| 8 | 0.8667 | 0.5417 | 0.6667 | 1.0000 | 0.5417 |
-| 10 | 0.8197 | 0.6211 | 0.7067 | 1.0000 | 0.6211 |
-| 12 | 0.8512 | 0.5971 | 0.7018 | 1.0000 | 0.5971 |
-| 14 | 0.3786 | 0.6517 | 0.4790 | 0.9967 | 0.6517 |
-| 16 | 0.3183 | 0.6749 | 0.4326 | 0.9986 | 0.6749 |
-| 18 | 0.2810 | 0.6903 | 0.3994 | 0.9989 | 0.6903 |
+| 6 | 0,0000 | 0,0000 | 0,0000 | 0,0000 | 0,0000 |
+| 8 | 0,8667 | 0,5417 | 0,6667 | 1,0000 | 0,5417 |
+| 10 | 0,8197 | 0,6211 | 0,7067 | 1,0000 | 0,6211 |
+| 12 | 0,8512 | 0,5971 | 0,7018 | 1,0000 | 0,5971 |
+| 14 | 0,3786 | 0,6517 | 0,4790 | 0,9967 | 0,6517 |
+| 16 | 0,3183 | 0,6749 | 0,4326 | 0,9986 | 0,6749 |
+| 18 | 0,2810 | 0,6903 | 0,3994 | 0,9989 | 0,6903 |
 
 | Bits | Chamadas MR | Redução | Híbrido (s) | Direto (s) | Razão de tempo |
 | --- | --- | --- | --- | --- | --- |
-| 6 | 0 | 100.00% | 0.002626 | 0.000044 | 60.10 |
-| 8 | 30 | 87.29% | 0.011122 | 0.000097 | 114.42 |
-| 10 | 122 | 87.68% | 0.035163 | 0.000484 | 72.62 |
-| 12 | 383 | 90.50% | 0.157829 | 0.002234 | 70.65 |
-| 14 | 3217 | 80.21% | 0.735462 | 0.010257 | 71.70 |
-| 16 | 13756 | 78.92% | 3.059476 | 0.045797 | 66.81 |
-| 18 | 56263 | 78.50% | 14.272784 | 0.242789 | 58.79 |
+| 6 | 0 | 100,00% | 0,002626 | 0,000044 | 60,10 |
+| 8 | 30 | 87,29% | 0,011122 | 0,000097 | 114,42 |
+| 10 | 122 | 87,68% | 0,035163 | 0,000484 | 72,62 |
+| 12 | 383 | 90,50% | 0,157829 | 0,002234 | 70,65 |
+| 14 | 3217 | 80,21% | 0,735462 | 0,010257 | 71,70 |
+| 16 | 13756 | 78,92% | 3,059476 | 0,045797 | 66,81 |
+| 18 | 56263 | 78,50% | 14,272784 | 0,242789 | 58,79 |
 
 Em 12 bits, os falsos positivos caem de 2211 para 57 (97,42%), e o recall passa de 98,17% a 59,71%. A comparação altera base, restrição de fase e limiares conjuntamente. As métricas com fase fixa em radar.json isolam a etapa dos limiares. Os primos da base cancelam os próprios senos. Isso cria uma mudança de distribuição cujo efeito causal individual não foi isolado.
 
@@ -78,14 +78,14 @@ As execuções não vazias poupam cerca de 78,5–90,5% das chamadas em relaçã
 
 | Bits | Barreiras | Ausentes | MAE | MAE de referência | R² de teste |
 | --- | --- | --- | --- | --- | --- |
-| 12 | 563 | 0 | 2.8721 | 3.4578 | 0.0398 |
-| 14 | 1899 | 0 | 3.9050 | 4.5875 | 0.1216 |
-| 16 | 6541 | 0 | 4.6450 | 5.4999 | 0.1841 |
+| 12 | 563 | 0 | 2,8721 | 3,4578 | 0,0398 |
+| 14 | 1899 | 0 | 3,9050 | 4,5875 | 0,1216 |
+| 16 | 6541 | 0 | 4,6450 | 5,4999 | 0,1841 |
 
 | Bits A | Bits B | KS |
 | --- | --- | --- |
-| 12 | 14 | 0.037545 |
-| 14 | 16 | 0.028529 |
+| 12 | 14 | 0,037545 |
+| 14 | 16 | 0,028529 |
 
 As larguras residuais são divididas pela média dos gaps adjacentes. KS descreve semelhança empírica entre três escalas finitas com dependência espacial. A queda para 0,028529 sustenta estabilidade descritiva no protocolo. O R² de 0,1841 em 16 bits mede associação condicionada ao potencial completo. Como os primos-alvo continuam codificados, o experimento não estabelece previsão independente.
 
@@ -101,7 +101,7 @@ Checkpoints de origem: 2c828e8 (Fase 1), dc54a92 (Fase 2), 8579a08 (Fase 3). Cit
 
 ![Fase 1](../../outputs/first_run/comparison.png)
 
-Figura 1. Topologia, cobertura e comparação de larguras das bacias.
+Figura 1. Topologia, cobertura e comparação de larguras das bacias. As figuras mantêm os rótulos em inglês dos registros originais.
 
 ![Fase 2](../../outputs/phase2/12bits.png)
 
