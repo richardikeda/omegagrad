@@ -1,5 +1,12 @@
 # Histórico
 
+## 0.2.0 - 2026-11-06
+
+- Fundo contínuo por quadratura com refinamento nas bordas e potencial residual.
+- Scanner cego de mínimos da onda com base reduzida, métricas e teste de refinamento.
+- Remoção de primos internos, perturbações locais e diagnóstico de recuperação.
+- Dados, gráficos e relatório PDF da Fase 2; testes de gradientes e isolamento da base.
+
 ## 0.1.0 - 2026-11-06
 
 - Motor escalar de diferenciação reversa e funcionais L/W.

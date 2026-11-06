@@ -1,3 +1,8 @@
+import sys
+if '--phase2' in sys.argv:
+    from omegagrad.phase2_report import build
+    build()
+    raise SystemExit(0)
 import json,html
 from pathlib import Path
 from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Image,PageBreak,Table,TableStyle

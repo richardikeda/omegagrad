@@ -27,3 +27,14 @@ Em 12 bits com epsilon escalado: MAE 5,324 para log(lambda), contra 3,458 da mé
 5. Sensibilidade a localização, bordas, momento, ruído e tolerâncias.
 
 Esses itens são propostas, não experimentos já realizados. O estudo atual não demonstra novos teoremas nem vantagem de complexidade sobre o crivo usado como referência.
+
+
+## Fase 2: novos testes
+
+A subtração do fundo contínuo melhorou o MAE do modelo conjunto de assimetria e curvatura contra a média de treino, mas não atingiu R² positivo. O modelo usa intervalos pareados antes/depois e continua retrospectivo. Portanto, não se demonstrou que a borda era a única causa da dificuldade de previsão.
+
+A onda foi construída somente com primos até a raiz do horizonte. A precisão caiu de 36,11% para 19,51% entre 6 e 12 bits, enquanto o recall ficou entre 92,86% e 100%. Isso refuta, para o detector implementado, a identificação automática entre mínimos arredondados e primos desconhecidos.
+
+O teste de remoção registra deslocamentos e Hessianas e avalia uma regra de anomalia de gaps: ponto médio de intervalos maiores que duas vezes a mediana dos gaps retidos. Não houve recuperações exatas nas quatro escalas. Esse resultado é específico dessa regra; não demonstra impossibilidade de detectores mais informativos. Não foram ajustados parâmetros usando os rótulos ocultos.
+
+Detalhes, contagens e limitações numéricas estão no [relatório da Fase 2](../outputs/phase2/REPORT.md).

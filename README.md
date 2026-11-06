@@ -8,7 +8,21 @@ O objetivo é testar hipóteses sobre assimetria e estabilidade de escala com da
 
 ![Comparação experimental](outputs/first_run/comparison.png)
 
-## Resultados iniciais
+
+## Fase 2 - v0.2.0
+
+Implementados fundo contínuo sem posições primas, onda com base reduzida e teste de remoção de 10% dos primos internos.
+
+```bash
+python -m omegagrad.phase2
+python build_results_pdf.py --phase2
+```
+
+O detrending combina assimetria e Hessiana em regressão retrospectiva. Em 12 bits, MAE 3,02 versus baseline 3,46, mas R² permanece negativo (-0,044). A onda cega apresenta precisão 19,51%, recall 98,17% e F1 32,55%; os mínimos arredondados produzem muitos compostos. A regra simples de ponto médio do holdout não recuperou exatamente nenhum dos primos removidos.
+
+Veja [o protocolo e resultados completos da Fase 2](outputs/phase2/REPORT.md), [os dados](outputs/phase2/results.json) e [o PDF](output/pdf/OMEGAGRAD_Phase2_Blind_Discovery.pdf). A varredura cega enumera mínimos por brackets do gradiente em ordem top-down; não é uma trajetória com momento. O horizonte continua sendo informado.
+
+## Resultados iniciais da Fase 1
 
 | Bits | Horizonte | Primos | Mínimos: epsilon fixo | Mínimos: epsilon escalado |
 |---:|---:|---:|---:|---:|
