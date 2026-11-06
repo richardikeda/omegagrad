@@ -1,5 +1,7 @@
 # Executable reuse examples
 
+[Leia em português](README.pt-BR.md)
+
 Run from the repository root after installing the package.
 
 | Command | Demonstration |

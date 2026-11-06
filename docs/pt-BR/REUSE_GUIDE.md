@@ -27,4 +27,4 @@ O exemplo usa roots de omegagrad.phase2. A malha é avaliada em lote e cada muda
 
 Refine a malha, compare catálogos e registre raízes degeneradas ou intervalos ausentes. Em uma dimensão, máximos delimitam as bacias do fluxo de gradiente. Momento e ruído alteram a dinâmica.
 
-[Citação](../../CITATION.cff) · [Código dos exemplos](../../examples/README.md)
+[Citação](../../CITATION.cff) · [Código dos exemplos](../../examples/README.pt-BR.md)

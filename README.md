@@ -67,7 +67,7 @@ print(x.grad)  # -2.0
 - [Technical paper](docs/en/PAPER.md) · [English PDF](output/pdf/OMEGAGRAD_Technical_Paper.pdf)
 - [Theory](docs/en/THEORY.md) · [Methodology](docs/en/METHODOLOGY.md) · [Findings](docs/en/FINDINGS.md)
 - [Reproducibility](docs/en/REPRODUCIBILITY.md) · [Data dictionary](docs/en/DATA_DICTIONARY.md)
-- [Complete Portuguese archive](docs/pt-BR/ARCHIVE.md)
+- [Bilingual research archive and execution reports](docs/en/ARCHIVE.md) · [Acervo em português](docs/pt-BR/ARCHIVE.md)
 - [Phase 1 data](outputs/first_run/results.json) · [Phase 2 data](outputs/phase2/results.json) · [Phase 3 data](outputs/phase3/results.json)
 - [Citation metadata](CITATION.cff) · [License](LICENSE) · [Contributing](CONTRIBUTING.md)
 
