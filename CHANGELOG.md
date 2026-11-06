@@ -1,5 +1,12 @@
 # Histórico
 
+## 0.3.0 - 2026-11-06
+
+- Radar espectral calibrado apenas na base pequena e verificador Miller-Rabin base 2.
+- TensorValue com broadcasting, backprop e segunda derivada direcional.
+- Radar até 18 bits e geometria residual até 16 bits, com sensibilidade numérica.
+- Benchmarks, resultados negativos, trade-offs e relatório consolidado.
+
 ## 0.2.0 - 2026-11-06
 
 - Fundo contínuo por quadratura com refinamento nas bordas e potencial residual.

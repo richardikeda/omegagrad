@@ -38,3 +38,8 @@ A onda foi construída somente com primos até a raiz do horizonte. A precisão 
 O teste de remoção registra deslocamentos e Hessianas e avalia uma regra de anomalia de gaps: ponto médio de intervalos maiores que duas vezes a mediana dos gaps retidos. Não houve recuperações exatas nas quatro escalas. Esse resultado é específico dessa regra; não demonstra impossibilidade de detectores mais informativos. Não foram ajustados parâmetros usando os rótulos ocultos.
 
 Detalhes, contagens e limitações numéricas estão no [relatório da Fase 2](../outputs/phase2/REPORT.md).
+
+
+## Fase 3
+
+O filtro geométrico aumenta a precisão em 12 bits, com perda de recall. A comparação com a Fase 2 também muda a malha e a base; a redução total de falsos positivos não pode ser atribuída somente à profundidade. A calibração na base pequena tem distribuição diferente do intervalo oculto. A regressão com deslocamento das barreiras continua retrospectiva, mesmo quando R² supera zero. Resultados completos, custos e sensibilidade estão no [relatório da Fase 3](../outputs/phase3/REPORT.md).

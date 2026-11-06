@@ -33,3 +33,8 @@ class BlindWave:
             roots.append(dict(x=x,hessian=float(self.field(x,2)),residual=abs(float(self.field(x,1)))))
         candidates=sorted({round(r['x']) for r in roots if lower<round(r['x'])<=self.horizon},reverse=True)
         return dict(candidates=candidates,minima=roots,step=step)
+
+    def spectral_radar(self):
+        """Run the phase-locked radar with small-base-only calibration."""
+        from .radar import OmegaRadar
+        return OmegaRadar(self.horizon).run()

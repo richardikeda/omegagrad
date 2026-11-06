@@ -1,4 +1,9 @@
 import sys
+if '--phase3' in sys.argv:
+    from omegagrad.phase3_report import build
+    build()
+    raise SystemExit(0)
+import sys
 if '--phase2' in sys.argv:
     from omegagrad.phase2_report import build
     build()

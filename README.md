@@ -9,6 +9,22 @@ O objetivo é testar hipóteses sobre assimetria e estabilidade de escala com da
 ![Comparação experimental](outputs/first_run/comparison.png)
 
 
+## Fase 3 - v0.3.0
+
+Filtro de energia/curvatura com calibração restrita à base pequena, radar com malha 6k±1, Miller-Rabin base 2 e motor TensorValue em lote. Radar executado até 18 bits; geometria e regressão até 16 bits.
+
+```bash
+python -m omegagrad.phase3
+python -m omegagrad.phase3_refine
+python build_results_pdf.py --phase3
+```
+
+Em 12 bits, a precisão geométrica atingiu 85,12%, mas o recall caiu a 59,71%. Portanto, a melhoria não elimina o compromisso entre precisão e recuperação. A calibração pequena sofre mudança de distribuição. Miller-Rabin com uma base é um filtro probabilístico, não um certificado.
+
+[Relatório completo da Fase 3](outputs/phase3/REPORT.md) · [Benchmarks CSV](outputs/phase3/summary.csv) · [PDF consolidado](output/pdf/OMEGAGRAD_Phase3_Final_Report.pdf).
+
+TensorValue oferece backprop com broadcasting e segunda derivada direcional, suficiente para Hessianas locais de coordenadas independentes; não implementa Hessianas densas gerais. A varredura do radar continua parcialmente escalar. As métricas de custo incluem esse trabalho.
+
 ## Fase 2 - v0.2.0
 
 Implementados fundo contínuo sem posições primas, onda com base reduzida e teste de remoção de 10% dos primos internos.
