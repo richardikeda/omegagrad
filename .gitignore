@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+tmp/
+
+.env
+.env.*
+AGENTS.md
+*.log
+publication_prepare.py

@@ -1,0 +1,2 @@
+epsilon_mode,s_bits,p_omega,prime_count,epsilon,smoothing_width_integer,minimum_count,barrier_count,gaps_without_barrier,basin_width_mean,basin_width_cv,basin_width_sum,grid_stable,max_root_gradient_residual,max_root_newton_error_estimate,mean_normalized_prime_gap,coverage_mean,coverage_min,coverage_max,run_statuses,elapsed_seconds
+fixed,6,61,18,1e-06,0.061,18,17,0,0.05555555555555555,0.3800006251570825,1.0,True,1.0442136044730432e-10,5.297446582550649e-17,0.05689488910318225,1.0,1.0,1.0,lower_boundary,2.207653100020252
