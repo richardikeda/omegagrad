@@ -29,7 +29,15 @@
       "omegasieve.py": "1f2a29963286fddfe31d81cf31a4e4138b22da9671a5b72b3a039f64e482355d",
       "universe.py": "35152ddcf0fb8d314f32a76261a4afc25e83c6db5e13ffa3bb94b098b001b5b1",
       "__init__.py": "bb4a3a1f6fea83a64a7779dfb1f575bdf0189546bb03fbdaf0bdb121dfea3e4f"
-    }
+    },
+    "source_sha256_git_lf": {
+      "engine.py": "7d60eec063c34ca947fe972a127df1223b06ce1456ef150feee9047603c13bbc",
+      "experiments.py": "72cd0b511000ef2f498b4a14048f1d8473de38eaa9be78844b307e90d9e9a438",
+      "omegasieve.py": "1f2a29963286fddfe31d81cf31a4e4138b22da9671a5b72b3a039f64e482355d",
+      "universe.py": "35152ddcf0fb8d314f32a76261a4afc25e83c6db5e13ffa3bb94b098b001b5b1",
+      "__init__.py": "bb4a3a1f6fea83a64a7779dfb1f575bdf0189546bb03fbdaf0bdb121dfea3e4f"
+    },
+    "hash_note": "source_sha256 records executed working files; source_sha256_git_lf records identical source with Git LF line endings."
   },
   "scale_comparisons": [],
   "universes": [

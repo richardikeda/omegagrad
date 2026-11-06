@@ -21,3 +21,5 @@ Os testes confrontam AD com diferenças finitas e fórmulas analíticas, verific
 A primeira navegação usava um passo excessivamente conservador em regiões planas. Foi substituída por adaptação à curvatura com limitação e backtracking. A malha inicial de 12 bits perdeu um par de raízes próximo; o refinamento automático e um teste de regressão foram adicionados. A bateria publicada foi executada após essas correções.
 
 A integração contínua executa os testes; os resultados de referência são artefatos experimentais versionados. Alterações científicas devem gerar uma nova pasta de resultados e registrar diferenças de protocolo.
+
+Os hashes `source_sha256` preservam os bytes executados no Windows; `source_sha256_git_lf` registra a mesma fonte após normalização de quebras de linha LF pelo Git. A diferença de hash não representa mudança de algoritmo.
